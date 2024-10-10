@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>จดหน่วย</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>จดหน่วย</h1>
+        </header>
+        <main>
+            <div class="meter-info">
+                <p>TSC: BTSPP</p>
+                <p>ลำดับ: <span id="sequence">4/100</span></p>
+                <p>เลขมิเตอร์: <span id="meterNumber">6603129913</span></p>
+                <p>ประเภท: <span id="meterType">E-METER</span></p>
+            </div>
+            <div class="reading-input">
+                <label for="currentReading">ย้อน:</label>
+                <input type="number" id="currentReading" placeholder="5.1">
+                <button id="calculateBtn">บันทึกผลอ่าน</button>
+            </div>
+            <div id="result" class="hidden">
+                <h2>ผลการคำนวณ</h2>
+                <p>หน่วยที่ใช้: <span id="unitsUsed"></span></p>
+                <p>ค่าไฟฟ้า: <span id="electricityCharge"></span> บาท</p>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
