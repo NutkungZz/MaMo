@@ -106,16 +106,18 @@ body {
 .meter-details {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
-.meter-id {
+.meter-id-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    margin-bottom: 5px;
 }
 
-.meter-id > span:first-child {
+.meter-id-row > span:first-child {
     font-size: 18px;
     font-weight: 600;
 }
@@ -128,13 +130,13 @@ body {
     padding: 2px 8px;
     border-radius: 4px;
     font-size: 12px;
-    margin-right: 5px;
+    margin-left: 5px;
 }
 
 .tag.e-meter {
     background-color: #810E5D;
     color: white;
-    margin-top: 5px;
+    align-self: flex-start;
 }
 
 .tag.light {
@@ -292,7 +294,6 @@ h2 {
     transform: scale(0.95);
 }
 
-/* Media query for mobile devices */
 @media only screen and (max-width: 767px) {
     body {
         background-color: white;
@@ -313,7 +314,7 @@ h2 {
     }
 
     .content {
-        height: calc(100vh - 60px - 36px - 70px); /* Subtract heights of navbar, info-bar, and footer */
+        height: calc(100vh - 60px - 36px - 70px);
         overflow-y: auto;
     }
 
@@ -326,7 +327,6 @@ h2 {
     }
 }
 
-/* Media query for PC desktop */
 @media only screen and (min-width: 768px) {
     .app-container {
         margin-top: 20px;
