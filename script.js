@@ -85,6 +85,7 @@ function showBillDetails(result, currentReading, previousReading) {
             <p>ค่าพลังงานไฟฟ้า ${totalEnergyCharge.toFixed(2)} บาท</p>
             <p>ค่าบริการ: ${result.serviceCharge.toFixed(2)} บาท</p>
             <p>ค่า Ft ${result.ftRate.toFixed(4)} บาท/หน่วย: ${result.ftCharge.toFixed(2)} บาท</p>
+            <p></p>
             <p><strong>รวมค่าไฟฟ้าทั้งหมด: ${result.totalBill.toFixed(2)} บาท</strong></p>
         </div>
     `;
