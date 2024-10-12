@@ -144,4 +144,170 @@ body {
 
 .meter-details {
     display: flex;
-    justify-content: spac
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.label {
+    color: #666;
+}
+
+.address, .status {
+    font-size: 14px;
+    margin-top: 10px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.address i, .status i {
+    margin-right: 5px;
+    color: #810E5D;
+    font-size: 20px;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.action-buttons button {
+    background: none;
+    border: 1px solid #810E5D;
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #810E5D;
+}
+
+.action-buttons button i {
+    font-size: 24px;
+}
+
+.action-buttons button span {
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+h2 {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.reading-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.reading-info {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.reading-info span {
+    margin-right: 5px;
+}
+
+.reading-input {
+    flex-grow: 1;
+}
+
+.reading-input input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #810E5D;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.nav-button {
+    background: white;
+    border: 1px solid #810E5D;
+    color: #810E5D;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-button {
+    background-color: #810E5D;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    flex-grow: 1;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+}
+
+.main-button:hover {
+    background-color: #9E1173;
+    transform: scale(1.05);
+}
+
+.main-button:active {
+    background-color: #6A0B4A;
+    transform: scale(0.95);
+}
+
+/* Media query สำหรับอุปกรณ์มือถือ */
+@media only screen and (max-width: 767px) {
+    body {
+        background-color: white;
+    }
+    
+    .app-container {
+        max-width: 100%;
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+    }
+
+    .navbar {
+        border-radius: 0;
+    }
+
+    .content {
+        height: calc(100vh - 60px - 36px - 70px); /* ลบความสูงของ navbar, info-bar, และ footer */
+        overflow-y: auto;
+    }
+
+    .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: white;
+    }
+}
+
+/* Media query สำหรับ PC desktop */
+@media only screen and (min-width: 768px) {
+    .app-container {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
