@@ -25,17 +25,17 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 89px;
+    height: 60px;
 }
 
 .navbar .title {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
     letter-spacing: -0.02em;
 }
 
 .navbar .material-icons {
-    font-size: 30px;
+    font-size: 24px;
 }
 
 .info-bar {
@@ -45,7 +45,6 @@ body {
     justify-content: space-between;
     align-items: center;
     font-size: 12px;
-    height: 36px;
 }
 
 .info-bar .left, .info-bar .right {
@@ -60,11 +59,11 @@ body {
 
 .info-bar .online {
     color: green;
-    font-size: 12px;
+    font-size: 8px;
 }
 
 .content {
-    padding: 0px 12px;
+    padding: 15px;
 }
 
 .meter-info {
@@ -72,12 +71,13 @@ body {
     border-radius: 10px;
     padding: 15px;
     margin-bottom: 15px;
-    border: 1px solid #E7EDF5;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .order {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 10px;
 }
 
@@ -85,30 +85,46 @@ body {
     background-color: #810E5D;
     color: white;
     padding: 5px 10px;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: 22px;
-    line-height: 30px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 16px;
 }
 
 .meter-number {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 30px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5px;
 }
 
 .tag {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.tag:first-child {
     background-color: #810E5D;
     color: white;
-    padding: 2px 44px;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 140%;
-    margin-left: 10px;
+}
+
+.tag.light {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.tag.yellow {
+    background-color: #FFC107;
+    color: #333;
 }
 
 .meter-details {
@@ -116,21 +132,14 @@ body {
     justify-content: space-between;
     margin-bottom: 5px;
     font-size: 14px;
-    line-height: 140%;
 }
 
 .label {
-    color: #000000;
-    font-weight: 400;
-}
-
-.value {
-    font-weight: 600;
+    color: #666;
 }
 
 .address, .status {
     font-size: 14px;
-    line-height: 140%;
     margin-top: 10px;
     display: flex;
     align-items: flex-start;
@@ -139,7 +148,7 @@ body {
 .address i, .status i {
     margin-right: 5px;
     color: #810E5D;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .action-buttons {
@@ -151,8 +160,8 @@ body {
 .action-buttons button {
     background: none;
     border: 1px solid #810E5D;
-    border-radius: 15px;
-    padding: 10px;
+    border-radius: 8px;
+    padding: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -164,17 +173,14 @@ body {
 }
 
 .action-buttons button span {
-    font-size: 14px;
-    font-weight: 500;
-    margin-top: 5px;
+    font-size: 12px;
+    margin-top: 4px;
 }
 
 h2 {
     font-size: 16px;
-    font-weight: 600;
-    color: #666666;
+    color: #666;
     margin-bottom: 10px;
-    line-height: 140%;
 }
 
 .reading-container {
@@ -187,7 +193,7 @@ h2 {
     display: flex;
     align-items: center;
     margin-right: 10px;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .reading-info span {
@@ -201,8 +207,7 @@ h2 {
 .reading-input input {
     width: 100%;
     padding: 10px;
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 16px;
     border: 1px solid #810E5D;
     border-radius: 8px;
     box-sizing: border-box;
@@ -212,18 +217,16 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background-color: #FFFFFF;
+    padding: 15px;
 }
 
 .nav-button {
-    background: none;
+    background: white;
     border: 1px solid #810E5D;
     color: #810E5D;
-    font-size: 24px;
-    width: 46px;
-    height: 46px;
-    border-radius: 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -234,10 +237,9 @@ h2 {
     color: white;
     border: none;
     padding: 10px 20px;
-    border-radius: 15px;
+    border-radius: 8px;
     font-size: 16px;
     font-weight: 600;
     flex-grow: 1;
     margin: 0 10px;
-    height: 46px;
 }
