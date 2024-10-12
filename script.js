@@ -1,12 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     const meterReading = document.getElementById('meterReading');
     const saveButton = document.getElementById('saveButton');
+    const rateSelect = document.getElementById('rateSelect');
 
     function validateReading(value) {
         return !isNaN(value) && parseFloat(value) > 0;
     }
-
+//ฟังก์ชันคำนวณค่าไฟฟ้า
     function calculateElectricityBill(units, rate) {
+
+        //กำหนดอัตราค่าไฟฟ้าตามช่วงการใช้
         const tiers = [
             { limit: 15, prices: [2.3488, 0, 0, 0] },
             { limit: 10, prices: [2.9882, 0, 0, 0] },
@@ -21,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let remainingUnits = units;
         let calculation = [];
 
+        // คำนวณค่าไฟฟ้าตามช่วงการใช้
         for (let tier of tiers) {
             if (remainingUnits <= 0) break;
             
@@ -41,18 +45,22 @@ document.addEventListener('DOMContentLoaded', () => {
             remainingUnits -= usedUnits;
         }
 
+        // เพิ่มค่าบริการ
         const serviceCharge = 8.19;
         totalBill += serviceCharge;
 
         return { totalBill, calculation, serviceCharge };
     }
 
-    function showBillDetails(result) {
+    function showBillDetails(result, units, rate) {
         const modal = document.getElementById('billModal');
         const billDetails = document.getElementById('billDetails');
         const closeBtn = document.getElementsByClassName('close')[0];
 
-        let detailsHtml = "<ul>";
+        let detailsHtml = `<h3>การคำนวณค่าไฟฟ้า</h3>`;
+        detailsHtml += `<p>จำนวนหน่วยที่ใช้: ${units} หน่วย</p>`;
+        detailsHtml += `<p>อัตรา: ${rate}</p>`;
+        detailsHtml += "<ul>";
         result.calculation.forEach(item => {
             detailsHtml += `<li>${item}</li>`;
         });
@@ -87,10 +95,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const value = meterReading.value;
         if (validateReading(value)) {
             const units = parseFloat(value) - 0; // 0 คือค่าอ่านครั้งก่อน
-            const rateElement = document.querySelector('.meter-details-row .label:contains("อัตรา:") + span');
-            const rate = rateElement ? parseInt(rateElement.textContent.split(':')[0]) : 10;
+            const rate = parseInt(rateSelect.value);
             const result = calculateElectricityBill(units, rate);
-            showBillDetails(result);
+            showBillDetails(result, units, rate);
         } else {
             alert('กรุณากรอกค่าที่ถูกต้อง');
         }
