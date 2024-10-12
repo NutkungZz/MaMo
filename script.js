@@ -19,12 +19,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 { limit: 250, prices: [4.2218, 0, 0, 0] },
                 { limit: Infinity, prices: [4.4217, 0, 0, 0] }
             ];
+
+            const serviceCharge = 8.19;
         } else if (rate === '11') {
             tiers = [
                 { limit: 150, prices: [3.2484, 0, 0, 0] },
                 { limit: 250, prices: [4.2218, 0, 0, 0] },
                 { limit: Infinity, prices: [4.4217, 0, 0, 0] }
             ];
+
+            const serviceCharge = 24.62;
         }
 
         let totalBill = 0;
@@ -52,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             remainingUnits -= usedUnits;
         }
 
-        const serviceCharge = 8.19;
+
         totalBill += serviceCharge;
 
         // คำนวณค่า Ft
