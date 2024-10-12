@@ -10,10 +10,10 @@
 </head>
 <body>
     <div class="container-fluid p-0 app-container">
-        <nav class="navbar navbar-dark bg-primary">
+        <nav class="navbar navbar-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
-                    <i class="bi bi-arrow-left"></i>
+                    <i class="bi bi-chevron-left"></i>
                     จดหน่วย
                 </a>
                 <div>
@@ -24,54 +24,50 @@
         </nav>
         
         <div class="card m-3">
-            <div class="card-body">
+            <div class="card-body p-3">
                 <div class="d-flex justify-content-between align-items-center mb-2">
-                    <span>TSC: BTSPP</span>
-                    <span class="badge bg-primary">02-01-2024 09:41</span>
+                    <span class="text-muted small">TSC: BTSPP</span>
+                    <span class="badge bg-light text-dark small">02-01-2024 09:41 <i class="bi bi-circle-fill text-success ms-1"></i></span>
                 </div>
                 <div class="d-flex justify-content-between align-items-center mb-2">
-                    <span class="fw-bold">ลำดับ: 4/100</span>
-                    <span class="badge bg-secondary">ACHM0100</span>
+                    <span class="badge bg-light text-dark">ลำดับ: 4/100</span>
+                    <span class="badge bg-primary">ACHM0100</span>
                 </div>
                 <div class="mb-2">
-                    <span class="fw-bold">6603129913</span>
-                    <span class="badge bg-light text-dark ms-2">สุ่มหน่วย</span>
-                    <span class="badge bg-warning text-dark ms-2">รอจด</span>
+                    <span class="fw-bold fs-5">6603129913</span>
+                    <span class="badge bg-secondary ms-2">E-METER</span>
                 </div>
-                <div class="mb-2">
-                    <span>E-METER</span>
+                <div class="mb-2 small">
+                    <span class="text-muted">ยี่ห้อ/รุ่น</span> E-Meter/KY...
+                    <span class="ms-3 text-muted">หลักอ่าน</span> 7.3 หลัก
                 </div>
-                <div class="mb-2">
-                    <small>ยี่ห้อ/รุ่น E-Meter/KY...</small>
-                    <small class="ms-2">หลักอ่าน 7.3 หลัก</small>
+                <div class="mb-2 small">
+                    <span class="text-muted">อัตรา</span> 10:1115
+                    <span class="ms-3 text-muted">รหัสผิดปกติ</span> 0000
                 </div>
-                <div class="mb-2">
-                    <small>อัตรา 10:1115</small>
-                    <small class="ms-2">รหัสผิดปกติ 0000</small>
+                <div class="mb-2 small">
+                    <i class="bi bi-geo-alt-fill text-primary"></i>
+                    นายคลอง นามสกุล 200 อาคาร 51 การไฟฟ้าส่วนภูมิภาค ถ.งามวงศ์วาน...
                 </div>
-                <div class="mb-2">
-                    <i class="bi bi-geo-alt"></i>
-                    <small>นายคลอง นามสกุล 200 อาคาร 51 การไฟฟ้าส่วนภูมิภาค ถ.งามวงศ์วาน...</small>
-                </div>
-                <div class="mb-2">
-                    <small>สถานะ: 1 พิมพ์ใบแจ้ง : 1/1 eBill : 0</small>
+                <div class="mb-2 small text-muted">
+                    สถานะ: 1 พิมพ์ใบแจ้ง : 1/1 eBill : 0
                 </div>
                 <div class="d-flex justify-content-between mt-3">
-                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-bluetooth"></i> บลูทูธ</button>
-                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-map"></i> ดูแผนที่</button>
-                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-chat"></i> รหัสผิดปกติ</button>
-                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-printer"></i> พิมพ์</button>
+                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-bluetooth"></i></button>
+                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-map"></i></button>
+                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-chat-dots"></i></button>
+                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-printer"></i></button>
                 </div>
             </div>
         </div>
 
         <div class="card m-3">
-            <div class="card-body">
-                <h6 class="card-title">ข้อมูลการอ่านค่าพลังงานไฟฟ้า</h6>
+            <div class="card-body p-3">
+                <h6 class="card-title text-muted mb-3">ข้อมูลการอ่านค่าพลังงานไฟฟ้า</h6>
                 <div class="input-group mb-3">
-                    <span class="input-group-text">ย้อน</span>
-                    <input type="number" class="form-control" placeholder="5.1" aria-label="ย้อน">
-                    <button class="btn btn-outline-secondary" type="button"><i class="bi bi-pencil"></i></button>
+                    <span class="input-group-text bg-light border-0 text-muted">ย้อน</span>
+                    <input type="number" class="form-control border-0 bg-light" placeholder="5.1" aria-label="ย้อน">
+                    <button class="btn btn-outline-secondary border-0 bg-light" type="button"><i class="bi bi-pencil text-primary"></i></button>
                 </div>
                 <button class="btn btn-primary w-100" id="calculateBtn">บันทึกผลอ่าน</button>
             </div>
