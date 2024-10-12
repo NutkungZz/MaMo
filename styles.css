@@ -1,14 +1,16 @@
 body {
     font-family: Arial, sans-serif;
+    font-size: 14px; /* ลด font size ลงเล็กน้อย */
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
 }
+
 .app-container {
     max-width: 375px;
     margin: 0 auto;
     background-color: white;
-    border-radius: 30px;
+    border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
@@ -125,49 +127,73 @@ h2 {
 }
 .reading-container {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     margin-bottom: 15px;
 }
+
 .reading-info {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
-}
-.reading-info span {
     margin-right: 10px;
 }
+
 .reading-info .label {
-    font-size: 14px;
+    font-size: 12px;
     color: #666;
+    margin-right: 5px;
 }
+
+.reading-info .value {
+    font-size: 12px;
+    margin-right: 10px;
+}
+
 .reading-input {
     flex-grow: 1;
 }
+
 .reading-input input {
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
+    padding: 8px;
+    font-size: 14px;
     border: 1px solid #810E5D;
     border-radius: 5px;
     box-sizing: border-box;
 }
-.footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
+
+/* ปรับขนาด font และ padding ของส่วนอื่นๆ */
+.navbar .title {
+    font-size: 18px;
 }
-.nav-button {
-    background: none;
-    border: none;
-    color: #810E5D;
-    font-size: 24px;
+
+.info-bar {
+    font-size: 12px;
+    padding: 8px;
 }
+
+.meter-info {
+    font-size: 12px;
+    padding: 12px;
+}
+
+.action-buttons button {
+    padding: 4px;
+}
+
+.action-buttons button i {
+    font-size: 20px;
+}
+
+.action-buttons button span {
+    font-size: 10px;
+}
+
+h2 {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
 .main-button {
-    background-color: #810E5D;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
+    font-size: 14px;
+    padding: 8px 16px;
 }
