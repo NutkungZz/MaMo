@@ -1,11 +1,10 @@
 body {
     font-family: Arial, sans-serif;
-    font-size: 14px; /* ลด font size ลงเล็กน้อย */
+    font-size: 14px;
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
 }
-
 .app-container {
     max-width: 375px;
     margin: 0 auto;
@@ -23,177 +22,154 @@ body {
     align-items: center;
 }
 .navbar .title {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
 }
 .info-bar {
     background-color: #f0f0f0;
-    padding: 10px;
+    padding: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 14px;
+    font-size: 12px;
 }
 .info-bar .left, .info-bar .right {
     display: flex;
     align-items: center;
 }
 .info-bar .material-icons {
-    font-size: 18px;
+    font-size: 16px;
     margin-right: 5px;
 }
 .info-bar .online {
     color: green;
-    font-size: 12px;
+    font-size: 10px;
 }
 .content {
-    padding: 15px;
+    padding: 12px;
 }
 .meter-info {
     background-color: white;
     border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 15px;
+    padding: 12px;
+    margin-bottom: 12px;
+    font-size: 12px;
 }
 .order {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 .achm {
     background-color: #810E5D;
     color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
 }
 .meter-number {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 .meter-number .tag {
     background-color: #810E5D;
     color: white;
-    padding: 2px 5px;
+    padding: 2px 4px;
     border-radius: 3px;
-    font-size: 12px;
-    margin-left: 10px;
+    font-size: 10px;
+    margin-left: 8px;
 }
 .meter-details {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 5px;
-    font-size: 14px;
+    margin-bottom: 4px;
 }
 .label {
     color: #666;
-    margin-right: 5px;
+    margin-right: 4px;
 }
 .address, .status {
-    font-size: 14px;
-    margin-top: 10px;
+    font-size: 12px;
+    margin-top: 8px;
     display: flex;
     align-items: flex-start;
 }
 .address i, .status i {
-    margin-right: 5px;
+    margin-right: 4px;
     color: #810E5D;
+    font-size: 16px;
 }
 .action-buttons {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 .action-buttons button {
     background: none;
     border: 1px solid #810E5D;
-    border-radius: 5px;
-    padding: 5px;
+    border-radius: 4px;
+    padding: 4px;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: #810E5D;
 }
 .action-buttons button i {
-    font-size: 24px;
+    font-size: 20px;
 }
 .action-buttons button span {
-    font-size: 12px;
+    font-size: 10px;
 }
 h2 {
-    font-size: 16px;
+    font-size: 14px;
     color: #666;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 .reading-container {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
-
 .reading-info {
     display: flex;
     align-items: center;
-    margin-right: 10px;
+    margin-right: 8px;
 }
-
-.reading-info .label {
+.reading-info .label, .reading-info .value {
     font-size: 12px;
-    color: #666;
-    margin-right: 5px;
+    margin-right: 4px;
 }
-
-.reading-info .value {
-    font-size: 12px;
-    margin-right: 10px;
-}
-
 .reading-input {
     flex-grow: 1;
 }
-
 .reading-input input {
     width: 100%;
     padding: 8px;
     font-size: 14px;
     border: 1px solid #810E5D;
-    border-radius: 5px;
+    border-radius: 4px;
     box-sizing: border-box;
 }
-
-/* ปรับขนาด font และ padding ของส่วนอื่นๆ */
-.navbar .title {
-    font-size: 18px;
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
 }
-
-.info-bar {
-    font-size: 12px;
-    padding: 8px;
+.nav-button {
+    background: none;
+    border: none;
+    color: #810E5D;
+    font-size: 24px;
 }
-
-.meter-info {
-    font-size: 12px;
-    padding: 12px;
-}
-
-.action-buttons button {
-    padding: 4px;
-}
-
-.action-buttons button i {
-    font-size: 20px;
-}
-
-.action-buttons button span {
-    font-size: 10px;
-}
-
-h2 {
-    font-size: 14px;
-    margin-bottom: 8px;
-}
-
 .main-button {
-    font-size: 14px;
+    background-color: #810E5D;
+    color: white;
+    border: none;
     padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    flex-grow: 1;
+    margin: 0 10px;
 }
