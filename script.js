@@ -19,15 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
     meterReading.addEventListener('input', function() {
         const value = this.value;
         if (validateReading(value)) {
-            errorIcon.style.display = 'none';
-            if (checkAbnormalUsage(value)) {
-                errorMessage.style.display = 'block';
-            } else {
-                errorMessage.style.display = 'none';
-            }
+            this.style.borderColor = '#810E5D';
         } else {
-            errorIcon.style.display = 'block';
-            errorMessage.style.display = 'none';
+            this.style.borderColor = 'red';
         }
     });
 
