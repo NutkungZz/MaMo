@@ -8,13 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function calculateElectricityBill(units, rate) {
         const tiers = [
-            { limit: 15, price: 2.3488 },
-            { limit: 10, price: 2.9882 },
-            { limit: 10, price: 3.2405 },
-            { limit: 65, price: 3.6237 },
-            { limit: 50, price: 3.7171 },
-            { limit: 250, price: 4.2218 },
-            { limit: Infinity, price: 4.4217 }
+            { limit: 15, prices: [2.3488, 0, 0, 0] },
+            { limit: 10, prices: [2.9882, 0, 0, 0] },
+            { limit: 10, prices: [3.2405, 0, 0, 0] },
+            { limit: 65, prices: [3.6237, 0, 0, 0] },
+            { limit: 50, prices: [3.7171, 0, 0, 0] },
+            { limit: 250, prices: [4.2218, 0, 0, 0] },
+            { limit: Infinity, prices: [4.4217, 0, 0, 0] }
         ];
 
         let totalBill = 0;
@@ -25,15 +25,26 @@ document.addEventListener('DOMContentLoaded', () => {
             if (remainingUnits <= 0) break;
             
             let usedUnits = Math.min(remainingUnits, tier.limit);
-            let cost = usedUnits * tier.price;
-            totalBill += cost;
+            let tierTotal = 0;
+            let tierCalculation = `${usedUnits} หน่วย x (`;
             
-            calculation.push(`${usedUnits} หน่วย x ${tier.price.toFixed(4)} บาท = ${cost.toFixed(2)} บาท`);
+            for (let i = 0; i < 4; i++) {
+                let cost = Math.round(usedUnits * tier.prices[i] * 100) / 100;
+                tierTotal += cost;
+                tierCalculation += `${tier.prices[i].toFixed(4)}${i < 3 ? ' + ' : ''}`;
+            }
+            
+            tierCalculation += `) = ${tierTotal.toFixed(2)} บาท`;
+            totalBill += tierTotal;
+            calculation.push(tierCalculation);
             
             remainingUnits -= usedUnits;
         }
 
-        return { totalBill, calculation };
+        const serviceCharge = 8.19;
+        totalBill += serviceCharge;
+
+        return { totalBill, calculation, serviceCharge };
     }
 
     function showBillDetails(result) {
@@ -46,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             detailsHtml += `<li>${item}</li>`;
         });
         detailsHtml += "</ul>";
+        detailsHtml += `<p>ค่าบริการ: ${result.serviceCharge.toFixed(2)} บาท</p>`;
         detailsHtml += `<p><strong>รวมค่าไฟฟ้าทั้งหมด: ${result.totalBill.toFixed(2)} บาท</strong></p>`;
 
         billDetails.innerHTML = detailsHtml;
@@ -75,7 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const value = meterReading.value;
         if (validateReading(value)) {
             const units = parseFloat(value) - 0; // 0 คือค่าอ่านครั้งก่อน
-            const rate = 10; // สมมติว่าเป็นบ้านอยู่อาศัยขนาดเล็ก
+            const rateElement = document.querySelector('.meter-details-row .label:contains("อัตรา:") + span');
+            const rate = rateElement ? parseInt(rateElement.textContent.split(':')[0]) : 10;
             const result = calculateElectricityBill(units, rate);
             showBillDetails(result);
         } else {
