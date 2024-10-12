@@ -105,6 +105,46 @@ body {
 
 .meter-details {
     display: flex;
+    flex-direction: column;
+}
+
+.meter-details > span:first-child {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.meter-tags {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tag {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.tag.e-meter {
+    background-color: #810E5D;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.tag.light {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.tag.yellow {
+    background-color: #FFC107;
+    color: #333;
+}
+
+.meter-details {
+    display: flex;
     justify-content: space-between;
     margin-bottom: 5px;
     font-size: 14px;
@@ -129,34 +169,6 @@ body {
 
 .meter-details span:not(.label) {
     font-weight: 600;
-}
-
-.meter-tags {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.tag {
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-}
-
-.tag:first-child {
-    background-color: #810E5D;
-    color: white;
-}
-
-.tag.light {
-    background-color: #e0e0e0;
-    color: #333;
-}
-
-.tag.yellow {
-    background-color: #FFC107;
-    color: #333;
 }
 
 .address, .status {
@@ -276,7 +288,7 @@ h2 {
     transform: scale(0.95);
 }
 
-/* Media query สำหรับอุปกรณ์มือถือ */
+/* Media query for mobile devices */
 @media only screen and (max-width: 767px) {
     body {
         background-color: white;
@@ -297,7 +309,7 @@ h2 {
     }
 
     .content {
-        height: calc(100vh - 60px - 36px - 70px); /* ลบความสูงของ navbar, info-bar, และ footer */
+        height: calc(100vh - 60px - 36px - 70px); /* Subtract heights of navbar, info-bar, and footer */
         overflow-y: auto;
     }
 
@@ -310,7 +322,7 @@ h2 {
     }
 }
 
-/* Media query สำหรับ PC desktop */
+/* Media query for PC desktop */
 @media only screen and (min-width: 768px) {
     .app-container {
         margin-top: 20px;
