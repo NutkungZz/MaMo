@@ -5,126 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>จดหน่วย</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <div class="app-container">
         <nav class="navbar">
-            <div class="header">
-                <div class="icons">
-                    <div class="icon"></div>
-                </div>
-                <div class="title">จดหน่วย</div>
-                <div class="icons">
-                    <div class="icon form-3"></div>
-                    <div class="icon form-4"></div>
-                </div>
+            <i class="material-icons">arrow_back</i>
+            <span class="title">จดหน่วย</span>
+            <div>
+                <i class="material-icons">search</i>
+                <i class="material-icons">add</i>
             </div>
         </nav>
         
-        <div class="card-head">
-            <div class="frame-10750">
-                <div class="frame-10773">
-                    <div class="icons">
-                        <div class="printer"></div>
-                    </div>
-                    <div class="tsc">TSC: BTSPP</div>
-                </div>
-                <div class="frame-10792">
-                    <div class="frame-10819">
-                        <div class="icon-clock"></div>
-                        <div class="date-time">02-01-2024 09:41</div>
-                    </div>
-                    <div class="icon-map-pin"></div>
-                    <div class="on">On</div>
-                </div>
+        <div class="info-bar">
+            <div class="left">
+                <i class="material-icons">print</i>
+                <span>TSC: BTSPP</span>
+            </div>
+            <div class="right">
+                <i class="material-icons">access_time</i>
+                <span>02-01-2024 09:41</span>
+                <i class="material-icons online">fiber_manual_record</i>
+                <span>On</span>
             </div>
         </div>
 
-        <div class="body">
-            <div class="content-mru">
-                <div class="group-44">
-                    <div class="frame-10730">
-                        <div class="achm0100">ACHM0100</div>
+        <div class="content">
+            <div class="meter-info">
+                <div class="order">
+                    <span>ลำดับ 4/100</span>
+                    <span class="achm">ACHM0100</span>
+                </div>
+                <div class="meter-number">
+                    <i class="material-icons">data_usage</i>
+                    <span>6603129910</span>
+                    <span class="tag">E-METER</span>
+                </div>
+                <div class="meter-details">
+                    <div>
+                        <span class="label">ยี่ห้อ/รุ่น</span>
+                        <span>IPG/IPGSM1</span>
                     </div>
-                    <div class="frame-10729">
-                        <div class="frame-10728">
-                            <div class="order">ลำดับ</div>
-                            <div class="order-number">4/100</div>
-                        </div>
+                    <div>
+                        <span class="label">หลักอ่าน</span>
+                        <span>7.3 หลัก</span>
                     </div>
+                </div>
+                <div class="meter-details">
+                    <div>
+                        <span class="label">อัตรา</span>
+                        <span>10:1115</span>
+                    </div>
+                    <div>
+                        <span class="label">รหัสผิดปกติ</span>
+                        <span>0000</span>
+                    </div>
+                </div>
+                <div class="address">
+                    <i class="material-icons">place</i>
+                    <span>นายทดสอบ นามสกุล 200 อาคาร 51 การไฟฟ้าส่วนภูมิภาค ถ.งามวงศ์วาน....</span>
+                </div>
+                <div class="status">
+                    <span>สถานะ: 1 พิมพ์ใบแจ้ง : 1/1 eBill : 0</span>
                 </div>
             </div>
 
-            <div class="content-details">
-                <div class="frame-10822">
-                    <div class="frame-10771">
-                        <div class="frame-427319267">
-                            <div class="frame-10767">
-                                <div class="vector-59"></div>
-                                <div class="meter-number">6603129910</div>
-                            </div>
-                            <div class="frame-271">
-                                <div class="e-meter">E-METER</div>
-                            </div>
-                        </div>
-                        <div class="frame-10828">
-                            <div class="label-icon">
-                                <div class="form">
-                                    <div class="status">รอจด</div>
-                                </div>
-                            </div>
-                        </div>
+            <div class="action-buttons">
+                <button><i class="material-icons">bluetooth</i><span>บลูทูธ</span></button>
+                <button><i class="material-icons">map</i><span>ดูแผนที่</span></button>
+                <button><i class="material-icons">chat</i><span>รหัสผิดปกติ</span></button>
+                <button><i class="material-icons">print</i><span>พิมพ์</span></button>
+            </div>
+
+            <h2>ข้อมูลการอ่านค่าพลังงานไฟฟ้า</h2>
+
+            <div class="reading-input">
+                <div class="reading-info">
+                    <div>
+                        <span class="label">Reg.</span>
+                        <span>000</span>
                     </div>
-                    <!-- เพิ่มส่วนอื่นๆ ตามโครงสร้าง CSS -->
-                </div>
-            </div>
-
-            <div class="menu">
-                <!-- เพิ่มปุ่มเมนูต่างๆ -->
-            </div>
-
-            <div class="bar-bluetooth">
-                <div class="title">ข้อมูลการอ่านค่าพลังงานไฟฟ้า</div>
-            </div>
-
-            <div class="list-meter-reading">
-                <div class="kwh-enable-value">
-                    <div class="frame-10797">
-                        <div class="frame-10798">
-                            <div class="register">
-                                <div class="reg">Reg.</div>
-                                <div class="value">000</div>
-                            </div>
-                            <div class="type-name">
-                                <div class="type">Type</div>
-                                <div class="kwh">kWh</div>
-                            </div>
-                        </div>
-                        <div class="input-text">
-                            <input type="text" class="input" placeholder="0.00">
-                        </div>
-                    </div>
-                    <div class="frame-10813">
-                        <div class="warning">พบการใช้ไฟสูงผิดปกติมากกว่า 150%</div>
+                    <div>
+                        <span class="label">Type</span>
+                        <span>kWh</span>
                     </div>
                 </div>
+                <input type="text" value="1234">
+                <i class="material-icons error">cancel</i>
             </div>
+            <p class="error-message">พบการใช้ไฟสูงผิดปกติมากกว่า 150%</p>
         </div>
 
         <div class="footer">
-            <div class="btn-save">
-                <button class="next-button">
-                    <div class="icon-chevron-left"></div>
-                </button>
-                <button class="large-button">
-                    <div class="btn">
-                        <div class="button-text">บันทึกผลอ่าน</div>
-                    </div>
-                </button>
-                <button class="next-button">
-                    <div class="icon-chevron-right"></div>
-                </button>
-            </div>
+            <button class="nav-button"><i class="material-icons">chevron_left</i></button>
+            <button class="main-button">บันทึก</button>
+            <button class="nav-button"><i class="material-icons">chevron_right</i></button>
         </div>
     </div>
 </body>
