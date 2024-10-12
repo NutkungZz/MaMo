@@ -52,29 +52,41 @@ document.addEventListener('DOMContentLoaded', () => {
         return { totalBill, calculation, serviceCharge };
     }
 
-    function showBillDetails(result, units, rate) {
+    //แสดงการคำนวณ
+    function showBillDetails(result, units, previousReading) {
         const modal = document.getElementById('billModal');
         const billDetails = document.getElementById('billDetails');
         const closeBtn = document.getElementsByClassName('close')[0];
-
+    
         let detailsHtml = `<h3>การคำนวณค่าไฟฟ้า</h3>`;
-        detailsHtml += `<p>จำนวนหน่วยที่ใช้: ${units} หน่วย</p>`;
-        detailsHtml += `<p>อัตรา: ${rate}</p>`;
-        detailsHtml += "<ul>";
-        result.calculation.forEach(item => {
-            detailsHtml += `<li>${item}</li>`;
+        detailsHtml += `<p>อัตรา: 10</p>`;
+        detailsHtml += `<p>จำนวนหน่วยที่ใช้ ${units} - ${previousReading} = ${units - previousReading} หน่วย</p>`;
+        
+        let totalEnergyCharge = 0;
+        result.calculation.forEach((tier, index) => {
+            let tierCalculation = `${tier.units} หน่วย: `;
+            let tierTotal = 0;
+            for (let i = 0; i < 4; i++) {
+                tierTotal += tier.costs[i].cost;
+                tierCalculation += `(${tier.prices[i].toFixed(4)}*${tier.units})`;
+                if (i < 3) tierCalculation += ' + ';
+            }
+            tierCalculation += ` = ${tierTotal.toFixed(2)} บาท`;
+            detailsHtml += `<p>${tierCalculation}</p>`;
+            totalEnergyCharge += tierTotal;
         });
-        detailsHtml += "</ul>";
+        
+        detailsHtml += `<p>ค่าพลังงานไฟฟ้า ${totalEnergyCharge.toFixed(2)}</p>`;
         detailsHtml += `<p>ค่าบริการ: ${result.serviceCharge.toFixed(2)} บาท</p>`;
         detailsHtml += `<p><strong>รวมค่าไฟฟ้าทั้งหมด: ${result.totalBill.toFixed(2)} บาท</strong></p>`;
-
+    
         billDetails.innerHTML = detailsHtml;
         modal.style.display = "block";
-
+    
         closeBtn.onclick = function() {
             modal.style.display = "none";
         }
-
+    
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
