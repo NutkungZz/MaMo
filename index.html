@@ -92,18 +92,19 @@
                     </div>
                 </div>
                 <div class="reading-input">
-                    <input type="text" value="1234">
-                    <i class="material-icons error">cancel</i>
+                    <input type="text" id="meterReading" placeholder="กรอกค่าที่อ่านได้">
+                    <i class="material-icons error" id="errorIcon" style="display: none;">cancel</i>
                 </div>
             </div>
-            <p class="error-message">พบการใช้ไฟสูงผิดปกติมากกว่า 150%</p>
+            <p class="error-message" id="errorMessage" style="display: none;">พบการใช้ไฟสูงผิดปกติมากกว่า 150%</p>
         </div>
 
         <div class="footer">
             <button class="nav-button"><i class="material-icons">chevron_left</i></button>
-            <button class="main-button">บันทึก</button>
+            <button class="main-button" id="saveButton">บันทึก</button>
             <button class="nav-button"><i class="material-icons">chevron_right</i></button>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
