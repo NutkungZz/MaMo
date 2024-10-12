@@ -7,67 +7,69 @@ document.addEventListener('DOMContentLoaded', () => {
         return !isNaN(value) && parseFloat(value) > 0;
     }
 
-    function calculateElectricityBill(units, rate) {
-        let tiers;
-        let serviceCharge;
-        
-        if (rate === '10') {
-            tiers = [
-                { limit: 15, prices: [2.3488, 0, 0, 0] },
-                { limit: 10, prices: [2.9882, 0, 0, 0] },
-                { limit: 10, prices: [3.2405, 0, 0, 0] },
-                { limit: 65, prices: [3.6237, 0, 0, 0] },
-                { limit: 50, prices: [3.7171, 0, 0, 0] },
-                { limit: 250, prices: [4.2218, 0, 0, 0] },
-                { limit: Infinity, prices: [4.4217, 0, 0, 0] }
-            ];
+function calculateElectricityBill(units, rate) {
+    let tiers;
+    let serviceCharge;
 
-            serviceCharge = 8.19;
-        } else if (rate === '11') {
-            tiers = [
-                { limit: 150, prices: [3.2484, 0, 0, 0] },
-                { limit: 250, prices: [4.2218, 0, 0, 0] },
-                { limit: Infinity, prices: [4.4217, 0, 0, 0] }
-            ];
+    //บ้านอยู่อาศัย อัตรา 1.1.1
+    if (rate === '10') {
+        tiers = [
+            { limit: 15, prices: [2.3488, 0, 0, 0] },
+            { limit: 10, prices: [2.9882, 0, 0, 0] },
+            { limit: 10, prices: [3.2405, 0, 0, 0] },
+            { limit: 65, prices: [3.6237, 0, 0, 0] },
+            { limit: 50, prices: [3.7171, 0, 0, 0] },
+            { limit: 250, prices: [4.2218, 0, 0, 0] },
+            { limit: Infinity, prices: [4.4217, 0, 0, 0] }
+        ];
+        serviceCharge = 8.19;
 
-            serviceCharge = 24.62;
-        }
-
-        let totalBill = 0;
-        let remainingUnits = units;
-        let calculation = [];
-
-        for (let tier of tiers) {
-            if (remainingUnits <= 0) break;
-            
-            let usedUnits = Math.min(remainingUnits, tier.limit);
-            let tierTotal = 0;
-            let tierCalculation = `${usedUnits} หน่วย: (`;
-            
-            for (let i = 0; i < 4; i++) {
-                let cost = Math.round(usedUnits * tier.prices[i] * 100) / 100;
-                tierTotal += cost;
-                tierCalculation += `${tier.prices[i].toFixed(4)}*${usedUnits})`;
-                if (i < 3) tierCalculation += ' + (';
-            }
-            
-            tierCalculation += ` = ${tierTotal.toFixed(2)} บาท`;
-            totalBill += tierTotal;
-            calculation.push({ usedUnits, tierCalculation, tierTotal });
-            
-            remainingUnits -= usedUnits;
-        }
-
-
-        totalBill += serviceCharge;
-
-        // คำนวณค่า Ft
-        const ftRate = 0.3972;
-        const ftCharge = Math.round(units * ftRate * 100) / 100;
-        totalBill += ftCharge;
-
-        return { totalBill, calculation, serviceCharge, ftRate, ftCharge, units, rate };
+    //บ้านอยู่อาศัย อัตรา 1.1.2
+    } else if (rate === '11') {
+        tiers = [
+            { limit: 150, prices: [3.2484, 0, 0, 0] },
+            { limit: 250, prices: [4.2218, 0, 0, 0] },
+            { limit: Infinity, prices: [4.4217, 0, 0, 0] }
+        ];
+        serviceCharge = 24.62;
+    } else {
+        throw new Error('Invalid rate');
     }
+
+    let totalBill = 0;
+    let remainingUnits = units;
+    let calculation = [];
+
+    for (let tier of tiers) {
+        if (remainingUnits <= 0) break;
+        
+        let usedUnits = Math.min(remainingUnits, tier.limit);
+        let tierTotal = 0;
+        let tierCalculation = `${usedUnits} หน่วย: (`;
+        
+        for (let i = 0; i < 4; i++) {
+            let cost = Math.round(usedUnits * tier.prices[i] * 100) / 100;
+            tierTotal += cost;
+            tierCalculation += `${tier.prices[i].toFixed(4)}*${usedUnits})`;
+            if (i < 3) tierCalculation += ' + (';
+        }
+        
+        tierCalculation += ` = ${tierTotal.toFixed(2)} บาท`;
+        totalBill += tierTotal;
+        calculation.push({ usedUnits, tierCalculation, tierTotal });
+        
+        remainingUnits -= usedUnits;
+    }
+
+    totalBill += serviceCharge;
+
+    // คำนวณค่า Ft
+    const ftRate = 0.3972;
+    const ftCharge = Math.round(units * ftRate * 100) / 100;
+    totalBill += ftCharge;
+
+    return { totalBill, calculation, serviceCharge, ftRate, ftCharge, units, rate };
+}
 
     function showBillDetails(result, currentReading, previousReading) {
         const modal = document.getElementById('billModal');
