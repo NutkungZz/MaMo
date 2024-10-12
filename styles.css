@@ -105,22 +105,6 @@ body {
 
 .meter-details {
     display: flex;
-    flex-direction: column;
-}
-
-.meter-details > span {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.meter-tags {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.meter-details {
-    display: flex;
     justify-content: space-between;
     margin-bottom: 5px;
     font-size: 14px;
@@ -130,6 +114,14 @@ body {
     flex: 1;
 }
 
+.meter-details > div:first-child {
+    text-align: left;
+}
+
+.meter-details > div:last-child {
+    text-align: right;
+}
+
 .meter-details .label {
     color: #666;
     margin-right: 5px;
@@ -137,6 +129,11 @@ body {
 
 .meter-details span:not(.label) {
     font-weight: 600;
+}
+
+.meter-tags {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .tag {
@@ -160,17 +157,6 @@ body {
 .tag.yellow {
     background-color: #FFC107;
     color: #333;
-}
-
-.meter-details {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-    font-size: 14px;
-}
-
-.label {
-    color: #666;
 }
 
 .address, .status {
