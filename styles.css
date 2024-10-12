@@ -1,48 +1,42 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
     background-color: #f0f0f0;
 }
 
-#app {
-    max-width: 400px;
+.app-container {
+    max-width: 500px;
     margin: 0 auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #f0f0f0;
 }
 
-header {
+.navbar {
+    background-color: #8e24aa !important;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.badge {
+    font-weight: normal;
+}
+
+.btn-outline-primary {
+    border-color: #8e24aa;
+    color: #8e24aa;
+}
+
+.btn-outline-primary:hover {
     background-color: #8e24aa;
     color: white;
-    padding: 10px;
-    text-align: center;
-    border-radius: 8px 8px 0 0;
 }
 
-.meter-info {
-    margin-bottom: 20px;
-}
-
-.reading-input {
-    margin-bottom: 20px;
-}
-
-input, button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-}
-
-button {
+.btn-primary {
     background-color: #8e24aa;
-    color: white;
-    border: none;
-    cursor: pointer;
+    border-color: #8e24aa;
 }
 
-.hidden {
-    display: none;
+.btn-primary:hover {
+    background-color: #7b1fa2;
+    border-color: #7b1fa2;
 }
