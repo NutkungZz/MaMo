@@ -108,15 +108,20 @@ body {
     flex-direction: column;
 }
 
-.meter-details > span:first-child {
+.meter-id {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.meter-id > span:first-child {
     font-size: 18px;
     font-weight: 600;
-    margin-bottom: 5px;
 }
 
 .meter-tags {
     display: flex;
-    flex-wrap: wrap;
 }
 
 .tag {
@@ -124,13 +129,12 @@ body {
     border-radius: 4px;
     font-size: 12px;
     margin-right: 5px;
-    margin-bottom: 5px;
 }
 
 .tag.e-meter {
     background-color: #810E5D;
     color: white;
-    margin-bottom: 5px;
+    margin-top: 5px;
 }
 
 .tag.light {
