@@ -148,21 +148,19 @@ h2 {
 
 .reading-container {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     margin-bottom: 5px;
 }
 
 .reading-info {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     margin-right: 10px;
-    width: 40px;
+    width: 80px;
 }
 
-.reading-info div {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+.reading-info span {
+    margin-right: 5px;
 }
 
 .reading-info .label {
@@ -172,44 +170,15 @@ h2 {
 
 .reading-input {
     flex-grow: 1;
-    position: relative;
 }
 
 .reading-input input {
     width: 100%;
     padding: 10px;
-    font-size: 18px;
+    font-size: 16px;
     border: 1px solid #810E5D;
     border-radius: 5px;
-}
-
-.reading-input .error {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: red;
-}
-
-.error-message {
-    color: red;
-    font-size: 12px;
-    margin-top: 5px;
-    text-align: right;
-}
-
-.footer {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px;
-}
-
-.nav-button {
-    background-color: white;
-    border: 1px solid #810E5D;
-    color: #810E5D;
-    padding: 10px;
-    border-radius: 5px;
+    box-sizing: border-box;
 }
 
 .main-button {
@@ -220,4 +189,14 @@ h2 {
     border-radius: 5px;
     flex-grow: 1;
     margin: 0 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.main-button:hover {
+    background-color: #6a0b4a;
+}
+
+.main-button:active {
+    background-color: #540937;
 }
