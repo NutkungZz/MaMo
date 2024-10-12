@@ -92,16 +92,31 @@ body {
 
 .meter-number {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 10px;
-    font-size: 18px;
-    font-weight: 600;
 }
 
-.tags {
+.meter-number .material-icons {
+    font-size: 24px;
+    color: #810E5D;
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+.meter-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.meter-details > span {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.meter-tags {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 5px;
 }
 
 .tag {
@@ -129,117 +144,4 @@ body {
 
 .meter-details {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-    font-size: 14px;
-}
-
-.label {
-    color: #666;
-}
-
-.address, .status {
-    font-size: 14px;
-    margin-top: 10px;
-    display: flex;
-    align-items: flex-start;
-}
-
-.address i, .status i {
-    margin-right: 5px;
-    color: #810E5D;
-    font-size: 20px;
-}
-
-.action-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-}
-
-.action-buttons button {
-    background: none;
-    border: 1px solid #810E5D;
-    border-radius: 8px;
-    padding: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #810E5D;
-}
-
-.action-buttons button i {
-    font-size: 24px;
-}
-
-.action-buttons button span {
-    font-size: 12px;
-    margin-top: 4px;
-}
-
-h2 {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 10px;
-}
-
-.reading-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.reading-info {
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-    font-size: 14px;
-}
-
-.reading-info span {
-    margin-right: 5px;
-}
-
-.reading-input {
-    flex-grow: 1;
-}
-
-.reading-input input {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #810E5D;
-    border-radius: 8px;
-    box-sizing: border-box;
-}
-
-.footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-}
-
-.nav-button {
-    background: white;
-    border: 1px solid #810E5D;
-    color: #810E5D;
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.main-button {
-    background-color: #810E5D;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    flex-grow: 1;
-    margin: 0 10px;
-}
+    justify-content: spac
