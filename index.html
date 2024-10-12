@@ -1,35 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>จดหน่วย</title>
-    <link rel="stylesheet" href="/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="app">
-        <header>
-            <h1>จดหน่วย</h1>
-        </header>
-        <main>
-            <div class="meter-info">
-                <p>TSC: BTSPP</p>
-                <p>ลำดับ: <span id="sequence">4/100</span></p>
-                <p>เลขมิเตอร์: <span id="meterNumber">6603129913</span></p>
-                <p>ประเภท: <span id="meterType">E-METER</span></p>
+    <div class="container-fluid p-0 app-container">
+        <nav class="navbar navbar-dark bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <i class="bi bi-arrow-left"></i>
+                    จดหน่วย
+                </a>
+                <div>
+                    <i class="bi bi-search me-3"></i>
+                    <i class="bi bi-plus-lg"></i>
+                </div>
             </div>
-            <div class="reading-input">
-                <label for="currentReading">ย้อน:</label>
-                <input type="number" id="currentReading" placeholder="5.1">
-                <button id="calculateBtn">บันทึกผลอ่าน</button>
+        </nav>
+        
+        <div class="card m-3">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span>TSC: BTSPP</span>
+                    <span class="badge bg-primary">02-01-2024 09:41</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="fw-bold">ลำดับ: 4/100</span>
+                    <span class="badge bg-secondary">ACHM0100</span>
+                </div>
+                <div class="mb-2">
+                    <span class="fw-bold">6603129913</span>
+                    <span class="badge bg-light text-dark ms-2">สุ่มหน่วย</span>
+                    <span class="badge bg-warning text-dark ms-2">รอจด</span>
+                </div>
+                <div class="mb-2">
+                    <span>E-METER</span>
+                </div>
+                <div class="mb-2">
+                    <small>ยี่ห้อ/รุ่น E-Meter/KY...</small>
+                    <small class="ms-2">หลักอ่าน 7.3 หลัก</small>
+                </div>
+                <div class="mb-2">
+                    <small>อัตรา 10:1115</small>
+                    <small class="ms-2">รหัสผิดปกติ 0000</small>
+                </div>
+                <div class="mb-2">
+                    <i class="bi bi-geo-alt"></i>
+                    <small>นายคลอง นามสกุล 200 อาคาร 51 การไฟฟ้าส่วนภูมิภาค ถ.งามวงศ์วาน...</small>
+                </div>
+                <div class="mb-2">
+                    <small>สถานะ: 1 พิมพ์ใบแจ้ง : 1/1 eBill : 0</small>
+                </div>
+                <div class="d-flex justify-content-between mt-3">
+                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-bluetooth"></i> บลูทูธ</button>
+                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-map"></i> ดูแผนที่</button>
+                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-chat"></i> รหัสผิดปกติ</button>
+                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-printer"></i> พิมพ์</button>
+                </div>
             </div>
-            <div id="result" class="hidden">
-                <h2>ผลการคำนวณ</h2>
-                <p>หน่วยที่ใช้: <span id="unitsUsed"></span></p>
-                <p>ค่าไฟฟ้า: <span id="electricityCharge"></span> บาท</p>
+        </div>
+
+        <div class="card m-3">
+            <div class="card-body">
+                <h6 class="card-title">ข้อมูลการอ่านค่าพลังงานไฟฟ้า</h6>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">ย้อน</span>
+                    <input type="number" class="form-control" placeholder="5.1" aria-label="ย้อน">
+                    <button class="btn btn-outline-secondary" type="button"><i class="bi bi-pencil"></i></button>
+                </div>
+                <button class="btn btn-primary w-100" id="calculateBtn">บันทึกผลอ่าน</button>
             </div>
-        </main>
+        </div>
     </div>
-    <script src="/script.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
