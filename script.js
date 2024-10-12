@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function calculateElectricityBill(units, rate) {
         let tiers;
+        let serviceCharge;
+        
         if (rate === '10') {
             tiers = [
                 { limit: 15, prices: [2.3488, 0, 0, 0] },
@@ -20,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { limit: Infinity, prices: [4.4217, 0, 0, 0] }
             ];
 
-            const serviceCharge = 8.19;
+            serviceCharge = 8.19;
         } else if (rate === '11') {
             tiers = [
                 { limit: 150, prices: [3.2484, 0, 0, 0] },
@@ -28,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { limit: Infinity, prices: [4.4217, 0, 0, 0] }
             ];
 
-            const serviceCharge = 24.62;
+            serviceCharge = 24.62;
         }
 
         let totalBill = 0;
