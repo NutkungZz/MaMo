@@ -106,10 +106,11 @@ document.addEventListener('DOMContentLoaded', () => {
     saveButton.addEventListener('click', function() {
         const value = meterReading.value;
         if (validateReading(value)) {
-            const units = parseFloat(value) - 0; // 0 คือค่าอ่านครั้งก่อน
-            const rate = parseInt(rateSelect.value);
+            const previousReading = 0; // ค่าอ่านครั้งก่อน (สมมติให้เป็น 0)
+            const units = parseFloat(value) - previousReading;
+            const rate = 10; // กำหนดค่าคงที่เป็น 10
             const result = calculateElectricityBill(units, rate);
-            showBillDetails(result, units, rate);
+            showBillDetails(result, value, previousReading);
         } else {
             alert('กรุณากรอกค่าที่ถูกต้อง');
         }
