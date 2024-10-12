@@ -1,43 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const readingInput = document.querySelector('.reading-input input');
-    const errorIcon = document.querySelector('.reading-input .error');
-    const errorMessage = document.querySelector('.error-message');
-    const saveButton = document.querySelector('.main-button');
+    const meterReading = document.getElementById('meterReading');
+    const errorIcon = document.getElementById('errorIcon');
+    const errorMessage = document.getElementById('errorMessage');
+    const saveButton = document.getElementById('saveButton');
 
-    // ฟังก์ชันสำหรับตรวจสอบค่าที่ป้อน
     function validateReading(value) {
-        // สมมติว่าค่าปกติอยู่ระหว่าง 0 ถึง 1000
-        return value >= 0 && value <= 1000;
+        // ตัวอย่างการตรวจสอบ: ค่าต้องเป็นตัวเลขและมากกว่า 0
+        return !isNaN(value) && parseFloat(value) > 0;
     }
 
-    // เพิ่ม event listener สำหรับการป้อนค่า
-    readingInput.addEventListener('input', function() {
-        const value = parseFloat(this.value);
+    function checkAbnormalUsage(value) {
+        // ตัวอย่างการตรวจสอบการใช้ไฟผิดปกติ (เกิน 150%)
+        // ในที่นี้สมมติว่าค่าปกติคือ 1000
+        const normalUsage = 1000;
+        return parseFloat(value) > normalUsage * 1.5;
+    }
+
+    meterReading.addEventListener('input', function() {
+        const value = this.value;
         if (validateReading(value)) {
             errorIcon.style.display = 'none';
+            if (checkAbnormalUsage(value)) {
+                errorMessage.style.display = 'block';
+            } else {
+                errorMessage.style.display = 'none';
+            }
+        } else {
+            errorIcon.style.display = 'block';
             errorMessage.style.display = 'none';
-        } else {
-            errorIcon.style.display = 'inline';
-            errorMessage.style.display = 'block';
         }
     });
 
-    // เพิ่ม event listener สำหรับปุ่มบันทึก
     saveButton.addEventListener('click', function() {
-        const value = parseFloat(readingInput.value);
+        const value = meterReading.value;
         if (validateReading(value)) {
-            alert('บันทึกค่าสำเร็จ: ' + value);
+            alert('บันทึกค่า ' + value + ' สำเร็จ');
+            // ทำการบันทึกข้อมูลจริงๆ ที่นี่
         } else {
-            alert('กรุณาตรวจสอบค่าที่ป้อนอีกครั้ง');
+            alert('กรุณากรอกค่าที่ถูกต้อง');
         }
-    });
-
-    // เพิ่ม event listener สำหรับปุ่มนำทาง (ถ้าต้องการ)
-    const navButtons = document.querySelectorAll('.nav-button');
-    navButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // ทำงานเมื่อกดปุ่มนำทาง
-            console.log('กดปุ่มนำทาง:', this.innerHTML);
-        });
     });
 });
