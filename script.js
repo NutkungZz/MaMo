@@ -71,54 +71,55 @@ function calculateElectricityBill(units, rate) {
     return { totalBill, calculation, serviceCharge, ftRate, ftCharge, units, rate };
 }
 
-    function showBillDetails(result, currentReading, previousReading) {
-        const modal = document.getElementById('billModal');
-        const billDetails = document.getElementById('billDetails');
-        const closeBtn = document.getElementsByClassName('close')[0];
+function showBillDetails(result, currentReading, previousReading) {
+    const modal = document.getElementById('billModal');
+    const billDetails = document.getElementById('billDetails');
+    const closeBtn = document.getElementsByClassName('close')[0];
 
-        let detailsHtml = `
-            <style>
-                .bill-details { font-size: 11px; line-height: 1.3; }
-                .bill-details h3 { font-size: 14px; margin-bottom: 8px; }
-                .bill-details p { margin: 3px 0; }
-            </style>
-            <div class="bill-details">
-                <h3>การคำนวณค่าไฟฟ้า</h3>
-                <p>อัตรา: ${result.rate}</p>
-                <p>จำนวนหน่วยที่ใช้ ${currentReading} - ${previousReading} = ${result.units} หน่วย</p>
-        `;
-        
-        let totalEnergyCharge = 0;
-        if (Array.isArray(result.calculation)) {
-            result.calculation.forEach(tier => {
-                if (tier && typeof tier.tierCalculation === 'string' && typeof tier.tierTotal === 'number') {
-                    detailsHtml += `<p>${tier.tierCalculation}</p>`;
-                    totalEnergyCharge += tier.tierTotal;
-                }
-            });
-        }
-        
-        detailsHtml += `
-                <p>ค่าพลังงานไฟฟ้า ${totalEnergyCharge.toFixed(2)} บาท</p>
-                <p>ค่าบริการ: ${result.serviceCharge.toFixed(2)} บาท</p>
-                <p>ค่า Ft ${result.ftRate.toFixed(4)} บาท/หน่วย: ${result.ftCharge.toFixed(2)} บาท</p>
-                <p><strong>รวมค่าไฟฟ้าทั้งหมด: ${result.totalBill.toFixed(2)} บาท</strong></p>
-            </div>
-        `;
+    let detailsHtml = `
+        <style>
+            .bill-details { font-size: 11px; line-height: 1.3; }
+            .bill-details h3 { font-size: 14px; margin-bottom: 8px; }
+            .bill-details p { margin: 3px 0; }
+            .bill-details .spacer { margin-top: 10px; }
+        </style>
+        <div class="bill-details">
+            <h3>การคำนวณค่าไฟฟ้า</h3>
+            <p>อัตรา: ${result.rate}</p>
+            <p>จำนวนหน่วยที่ใช้ ${currentReading} - ${previousReading} = ${result.units} หน่วย</p>
+    `;
+    
+    let totalEnergyCharge = 0;
+    if (Array.isArray(result.calculation)) {
+        result.calculation.forEach(tier => {
+            if (tier && typeof tier.tierCalculation === 'string' && typeof tier.tierTotal === 'number') {
+                detailsHtml += `<p>${tier.tierCalculation}</p>`;
+                totalEnergyCharge += tier.tierTotal;
+            }
+        });
+    }
+    
+    detailsHtml += `
+            <p class="spacer">ค่าพลังงานไฟฟ้า ${totalEnergyCharge.toFixed(2)} บาท</p>
+            <p>ค่าบริการ: ${result.serviceCharge.toFixed(2)} บาท</p>
+            <p>ค่า Ft ${result.ftRate.toFixed(4)} บาท/หน่วย: ${result.ftCharge.toFixed(2)} บาท</p>
+            <p class="spacer"><strong>รวมค่าไฟฟ้าทั้งหมด: ${result.totalBill.toFixed(2)} บาท</strong></p>
+        </div>
+    `;
 
-        billDetails.innerHTML = detailsHtml;
-        modal.style.display = "block";
+    billDetails.innerHTML = detailsHtml;
+    modal.style.display = "block";
 
-        closeBtn.onclick = function() {
+    closeBtn.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
             modal.style.display = "none";
         }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
     }
+}
 
     meterReading.addEventListener('input', function() {
         const value = this.value;
