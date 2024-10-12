@@ -119,6 +119,26 @@ body {
     flex-wrap: wrap;
 }
 
+.meter-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.meter-details > div {
+    flex: 1;
+}
+
+.meter-details .label {
+    color: #666;
+    margin-right: 5px;
+}
+
+.meter-details span:not(.label) {
+    font-weight: 600;
+}
+
 .tag {
     padding: 2px 8px;
     border-radius: 4px;
