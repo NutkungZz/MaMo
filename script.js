@@ -6,10 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function validateReading(value) {
         return !isNaN(value) && parseFloat(value) > 0;
     }
-//ฟังก์ชันคำนวณค่าไฟฟ้า
-    function calculateElectricityBill(units, rate) {
 
-        //กำหนดอัตราค่าไฟฟ้าตามช่วงการใช้
+    function calculateElectricityBill(units) {
         const tiers = [
             { limit: 15, prices: [2.3488, 0, 0, 0] },
             { limit: 10, prices: [2.9882, 0, 0, 0] },
@@ -24,56 +22,47 @@ document.addEventListener('DOMContentLoaded', () => {
         let remainingUnits = units;
         let calculation = [];
 
-        // คำนวณค่าไฟฟ้าตามช่วงการใช้
         for (let tier of tiers) {
             if (remainingUnits <= 0) break;
             
             let usedUnits = Math.min(remainingUnits, tier.limit);
             let tierTotal = 0;
-            let tierCalculation = `${usedUnits} หน่วย x (`;
+            let tierCalculation = `${usedUnits} หน่วย: (`;
             
             for (let i = 0; i < 4; i++) {
                 let cost = Math.round(usedUnits * tier.prices[i] * 100) / 100;
                 tierTotal += cost;
-                tierCalculation += `${tier.prices[i].toFixed(4)}${i < 3 ? ' + ' : ''}`;
+                tierCalculation += `${tier.prices[i].toFixed(4)}*${usedUnits})`;
+                if (i < 3) tierCalculation += ' + (';
             }
             
-            tierCalculation += `) = ${tierTotal.toFixed(2)} บาท`;
+            tierCalculation += ` = ${tierTotal.toFixed(2)} บาท`;
             totalBill += tierTotal;
-            calculation.push(tierCalculation);
+            calculation.push({ usedUnits, tierCalculation, tierTotal });
             
             remainingUnits -= usedUnits;
         }
 
-        // เพิ่มค่าบริการ
         const serviceCharge = 8.19;
         totalBill += serviceCharge;
 
         return { totalBill, calculation, serviceCharge };
     }
 
-    //แสดงการคำนวณ
-    function showBillDetails(result, units, previousReading) {
+    function showBillDetails(result, currentReading, previousReading) {
         const modal = document.getElementById('billModal');
         const billDetails = document.getElementById('billDetails');
         const closeBtn = document.getElementsByClassName('close')[0];
     
+        const units = currentReading - previousReading;
         let detailsHtml = `<h3>การคำนวณค่าไฟฟ้า</h3>`;
         detailsHtml += `<p>อัตรา: 10</p>`;
-        detailsHtml += `<p>จำนวนหน่วยที่ใช้ ${units} - ${previousReading} = ${units - previousReading} หน่วย</p>`;
+        detailsHtml += `<p>จำนวนหน่วยที่ใช้ ${currentReading} - ${previousReading} = ${units} หน่วย</p>`;
         
         let totalEnergyCharge = 0;
-        result.calculation.forEach((tier, index) => {
-            let tierCalculation = `${tier.units} หน่วย: `;
-            let tierTotal = 0;
-            for (let i = 0; i < 4; i++) {
-                tierTotal += tier.costs[i].cost;
-                tierCalculation += `(${tier.prices[i].toFixed(4)}*${tier.units})`;
-                if (i < 3) tierCalculation += ' + ';
-            }
-            tierCalculation += ` = ${tierTotal.toFixed(2)} บาท`;
-            detailsHtml += `<p>${tierCalculation}</p>`;
-            totalEnergyCharge += tierTotal;
+        result.calculation.forEach(tier => {
+            detailsHtml += `<p>${tier.tierCalculation}</p>`;
+            totalEnergyCharge += tier.tierTotal;
         });
         
         detailsHtml += `<p>ค่าพลังงานไฟฟ้า ${totalEnergyCharge.toFixed(2)}</p>`;
@@ -107,10 +96,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const value = meterReading.value;
         if (validateReading(value)) {
             const previousReading = 0; // ค่าอ่านครั้งก่อน (สมมติให้เป็น 0)
-            const units = parseFloat(value) - previousReading;
-            const rate = 10; // กำหนดค่าคงที่เป็น 10
-            const result = calculateElectricityBill(units, rate);
-            showBillDetails(result, value, previousReading);
+            const currentReading = parseFloat(value);
+            const units = currentReading - previousReading;
+            const result = calculateElectricityBill(units);
+            showBillDetails(result, currentReading, previousReading);
         } else {
             alert('กรุณากรอกค่าที่ถูกต้อง');
         }
