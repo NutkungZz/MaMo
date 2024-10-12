@@ -68,7 +68,12 @@ function calculateElectricityBill(units, rate) {
     const ftCharge = Math.round(units * ftRate * 100) / 100;
     totalBill += ftCharge;
 
-    return { totalBill, calculation, serviceCharge, ftRate, ftCharge, units, rate };
+    // คำนวณค่า VAT
+    const subtotal = totalBill; // ผลรวมก่อน VAT
+    const vat = Math.round(subtotal * 0.07 * 100) / 100; // VAT 7%
+    totalBill += vat;
+
+    return { totalBill, calculation, serviceCharge, ftRate, ftCharge, units, rate, vat, subtotal };
 }
 
 function showBillDetails(result, currentReading, previousReading) {
@@ -103,6 +108,7 @@ function showBillDetails(result, currentReading, previousReading) {
             <p class="spacer">ค่าพลังงานไฟฟ้า ${totalEnergyCharge.toFixed(2)} บาท</p>
             <p>ค่าบริการ: ${result.serviceCharge.toFixed(2)} บาท</p>
             <p>ค่า Ft ${result.ftRate.toFixed(4)} บาท/หน่วย: ${result.ftCharge.toFixed(2)} บาท</p>
+            <p>ภาษีมูลค่าเพิ่ม 7%: ${result.vat.toFixed(2)} บาท</p>
             <p class="spacer"><strong>รวมค่าไฟฟ้าทั้งหมด: ${result.totalBill.toFixed(2)} บาท</strong></p>
         </div>
     `;
