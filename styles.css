@@ -147,31 +147,31 @@ body {
     color: #333;
 }
 
-.meter-details {
+.meter-details-row {
     display: flex;
     justify-content: space-between;
     margin-bottom: 5px;
     font-size: 14px;
 }
 
-.meter-details > div {
+.meter-details-row > div {
     flex: 1;
 }
 
-.meter-details > div:first-child {
+.meter-details-row > div:first-child {
     text-align: left;
 }
 
-.meter-details > div:last-child {
+.meter-details-row > div:last-child {
     text-align: right;
 }
 
-.meter-details .label {
+.meter-details-row .label {
     color: #666;
     margin-right: 5px;
 }
 
-.meter-details span:not(.label) {
+.meter-details-row span:not(.label) {
     font-weight: 600;
 }
 
