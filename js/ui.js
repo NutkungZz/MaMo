@@ -76,11 +76,6 @@ function showBillDetails(result) {
     };
 }
 
-import { calculateElectricityBill } from './calculator.js';
-import { RATE_DETAILS, FT_RATE, VAT_RATE } from './config.js';
-
-// ... (ส่วนอื่นๆ ของ ui.js คงเดิม)
-
 // สร้าง HTML สำหรับแสดงรายละเอียดค่าไฟฟ้า
 function generateBillDetailsHTML(result) {
     let html = `
