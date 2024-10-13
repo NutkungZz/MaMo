@@ -15,7 +15,7 @@ function populateRateSelect() {
     const rateSelect = document.getElementById('rateSelect');
     if (!rateSelect) return;
     
-    console.log('Populating rate select. RATE_DETAILS:', config.RATE_DETAILS);
+    //console.log('Populating rate select. RATE_DETAILS:', config.RATE_DETAILS);
     
     for (const [rate, details] of Object.entries(config.RATE_DETAILS)) {
         const option = document.createElement('option');
@@ -84,7 +84,7 @@ function showBillDetails(result) {
 
 function generateBillDetailsHTML(result) {
     try {
-        console.log('Generating bill details. RATE_DETAILS:', config.RATE_DETAILS);
+        //console.log('Generating bill details. RATE_DETAILS:', config.RATE_DETAILS);
         
         let html = `
             <h3>การคำนวณค่าไฟฟ้า</h3>
