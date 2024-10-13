@@ -3,6 +3,7 @@ import * as config from './config.js';
 
 console.log('FT_RATE:', config.FT_RATE);
 console.log('VAT_RATE:', config.VAT_RATE);
+console.log('RATE_DETAILS:', config.RATE_DETAILS);
 
 export function initializeUI() {
     populateRateSelect();
