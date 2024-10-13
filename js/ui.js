@@ -15,7 +15,9 @@ function populateRateSelect() {
     const rateSelect = document.getElementById('rateSelect');
     if (!rateSelect) return;
     
-    for (const [rate, details] of Object.entries(RATE_DETAILS)) {
+    console.log('Populating rate select. RATE_DETAILS:', config.RATE_DETAILS);
+    
+    for (const [rate, details] of Object.entries(config.RATE_DETAILS)) {
         const option = document.createElement('option');
         option.value = rate;
         option.textContent = `${rate} (${details.name})`;
@@ -80,12 +82,13 @@ function showBillDetails(result) {
     };
 }
 
-// สร้าง HTML สำหรับแสดงรายละเอียดค่าไฟฟ้า
 function generateBillDetailsHTML(result) {
     try {
+        console.log('Generating bill details. RATE_DETAILS:', config.RATE_DETAILS);
+        
         let html = `
             <h3>การคำนวณค่าไฟฟ้า</h3>
-            <p>ประเภทผู้ใช้ไฟ: ${RATE_DETAILS[result.rate].name} (${result.rate})</p>
+            <p>ประเภทผู้ใช้ไฟ: ${config.RATE_DETAILS[result.rate].name} (${result.rate})</p>
             <p>จำนวนหน่วยที่ใช้: ${result.units} หน่วย</p>
         `;
 
@@ -102,9 +105,9 @@ function generateBillDetailsHTML(result) {
         html += `
             <p>ค่าพลังงานไฟฟ้า: ${result.totalEnergyCost.toFixed(2)} บาท</p>
             <p>ค่าบริการ: ${result.serviceCharge.toFixed(2)} บาท</p>
-            <p>ค่า Ft (${result.units} หน่วย x ${FT_RATE.toFixed(4)}): ${result.ftCharge.toFixed(2)} บาท</p>
+            <p>ค่า Ft (${result.units} หน่วย x ${config.FT_RATE.toFixed(4)}): ${result.ftCharge.toFixed(2)} บาท</p>
             <p>รวมก่อนภาษีมูลค่าเพิ่ม: ${(subtotalBeforeFtAndVat + result.ftCharge).toFixed(2)} บาท</p>
-            <p>ภาษีมูลค่าเพิ่ม ${(VAT_RATE * 100).toFixed(0)}% (${(subtotalBeforeFtAndVat + result.ftCharge).toFixed(2)} x ${VAT_RATE.toFixed(2)}): ${result.vat.toFixed(2)} บาท</p>
+            <p>ภาษีมูลค่าเพิ่ม ${(config.VAT_RATE * 100).toFixed(0)}% (${(subtotalBeforeFtAndVat + result.ftCharge).toFixed(2)} x ${config.VAT_RATE.toFixed(2)}): ${result.vat.toFixed(2)} บาท</p>
             <p><strong>รวมค่าไฟฟ้าทั้งหมด: ${result.totalBill.toFixed(2)} บาท</strong></p>
         `;
 
