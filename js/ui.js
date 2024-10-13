@@ -9,6 +9,8 @@ export function initializeUI() {
 
 function populateRateSelect() {
     const rateSelect = document.getElementById('rateSelect');
+    if (!rateSelect) return;
+    
     for (const [rate, details] of Object.entries(RATE_DETAILS)) {
         const option = document.createElement('option');
         option.value = rate;
@@ -18,9 +20,15 @@ function populateRateSelect() {
 }
 
 function setupEventListeners() {
-    document.getElementById('meterReading').addEventListener('input', validateMeterReading);
-    document.getElementById('saveButton').addEventListener('click', handleSaveButtonClick);
-    document.getElementsByClassName('close')[0].addEventListener('click', closeBillModal);
+    const meterReading = document.getElementById('meterReading');
+    const saveButton = document.getElementById('saveButton');
+    
+    if (meterReading) {
+        meterReading.addEventListener('input', validateMeterReading);
+    }
+    if (saveButton) {
+        saveButton.addEventListener('click', handleSaveButtonClick);
+    }
 }
 
 function validateMeterReading(event) {
@@ -33,11 +41,16 @@ function isValidReading(value) {
 }
 
 function handleSaveButtonClick() {
-    const meterReading = document.getElementById('meterReading').value;
-    const rate = document.getElementById('rateSelect').value;
+    const meterReading = document.getElementById('meterReading');
+    const rateSelect = document.getElementById('rateSelect');
 
-    if (isValidReading(meterReading)) {
-        const units = parseFloat(meterReading);
+    if (!meterReading || !rateSelect) return;
+
+    const value = meterReading.value;
+    const rate = rateSelect.value;
+
+    if (isValidReading(value)) {
+        const units = parseFloat(value);
         const result = calculateElectricityBill(units, rate);
         showBillDetails(result);
     } else {
@@ -48,9 +61,19 @@ function handleSaveButtonClick() {
 function showBillDetails(result) {
     const modal = document.getElementById('billModal');
     const billDetails = document.getElementById('billDetails');
+    const closeBtn = document.getElementsByClassName('close')[0];
     
+    if (!modal || !billDetails || !closeBtn) return;
+
     billDetails.innerHTML = generateBillDetailsHTML(result);
     modal.style.display = "block";
+
+    closeBtn.onclick = () => modal.style.display = "none";
+    window.onclick = (event) => {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
 }
 
 function generateBillDetailsHTML(result) {
@@ -75,12 +98,10 @@ function generateBillDetailsHTML(result) {
     return html;
 }
 
-function closeBillModal() {
-    document.getElementById('billModal').style.display = "none";
-}
-
 function updateDateTime() {
     const dateTimeElement = document.getElementById('dateTimeInfo');
+    if (!dateTimeElement) return;
+
     const now = new Date();
     const dateTimeString = now.toLocaleString('th-TH', { 
         year: 'numeric', 
