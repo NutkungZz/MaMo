@@ -1,5 +1,8 @@
 import { calculateElectricityBill } from './calculator.js';
-import { RATE_DETAILS, FT_RATE, VAT_RATE } from './config.js';
+import * as config from './config.js';
+
+console.log('FT_RATE:', config.FT_RATE);
+console.log('VAT_RATE:', config.VAT_RATE);
 
 export function initializeUI() {
     populateRateSelect();
