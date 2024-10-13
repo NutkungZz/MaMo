@@ -76,6 +76,12 @@ function showBillDetails(result) {
     };
 }
 
+import { calculateElectricityBill } from './calculator.js';
+import { RATE_DETAILS, FT_RATE, VAT_RATE } from './config.js';
+
+// ... (ส่วนอื่นๆ ของ ui.js คงเดิม)
+
+// สร้าง HTML สำหรับแสดงรายละเอียดค่าไฟฟ้า
 function generateBillDetailsHTML(result) {
     let html = `
         <h3>การคำนวณค่าไฟฟ้า</h3>
@@ -84,19 +90,28 @@ function generateBillDetailsHTML(result) {
     `;
 
     result.calculation.forEach(tier => {
-        html += `<p>${tier.usedUnits} หน่วย: (${tier.prices.map(price => price.toFixed(4)).join(' + ')}) = ${tier.tierCost.toFixed(2)} บาท</p>`;
+        let tierDetails = tier.prices.map(price => 
+            (tier.usedUnits * price).toFixed(2)
+        ).join(' + ');
+        
+        html += `<p>${tier.usedUnits} หน่วย: ${tierDetails} = ${tier.tierCost.toFixed(2)} บาท</p>`;
     });
+
+    const subtotalBeforeFtAndVat = result.totalEnergyCost + result.serviceCharge;
 
     html += `
         <p>ค่าพลังงานไฟฟ้า: ${result.totalEnergyCost.toFixed(2)} บาท</p>
         <p>ค่าบริการ: ${result.serviceCharge.toFixed(2)} บาท</p>
-        <p>ค่า Ft: ${result.ftCharge.toFixed(2)} บาท</p>
-        <p>ภาษีมูลค่าเพิ่ม 7%: ${result.vat.toFixed(2)} บาท</p>
+        <p>ค่า Ft (${result.units} หน่วย x ${FT_RATE.toFixed(4)}): ${result.ftCharge.toFixed(2)} บาท</p>
+        <p>รวมก่อนภาษีมูลค่าเพิ่ม: ${(subtotalBeforeFtAndVat + result.ftCharge).toFixed(2)} บาท</p>
+        <p>ภาษีมูลค่าเพิ่ม ${(VAT_RATE * 100).toFixed(0)}% (${(subtotalBeforeFtAndVat + result.ftCharge).toFixed(2)} x ${VAT_RATE.toFixed(2)}): ${result.vat.toFixed(2)} บาท</p>
         <p><strong>รวมค่าไฟฟ้าทั้งหมด: ${result.totalBill.toFixed(2)} บาท</strong></p>
     `;
 
     return html;
 }
+
+// ... (ส่วนที่เหลือของ ui.js คงเดิม)
 
 function updateDateTime() {
     const dateTimeElement = document.getElementById('dateTimeInfo');
