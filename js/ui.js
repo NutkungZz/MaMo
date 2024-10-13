@@ -79,12 +79,12 @@ function showBillDetails(result) {
 function generateBillDetailsHTML(result) {
     let html = `
         <h3>การคำนวณค่าไฟฟ้า</h3>
-        <p>อัตรา: ${result.rate}</p>
+        <p>ประเภทผู้ใช้ไฟ: ${RATE_DETAILS[result.rate].name} (${result.rate})</p>
         <p>จำนวนหน่วยที่ใช้: ${result.units} หน่วย</p>
     `;
 
     result.calculation.forEach(tier => {
-        html += `<p>${tier.usedUnits} หน่วย: (${tier.price.toFixed(4)} * ${tier.usedUnits}) = ${tier.tierCost.toFixed(2)} บาท</p>`;
+        html += `<p>${tier.usedUnits} หน่วย: (${tier.prices.map(price => price.toFixed(4)).join(' + ')}) = ${tier.tierCost.toFixed(2)} บาท</p>`;
     });
 
     html += `
