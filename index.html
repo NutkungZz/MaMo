@@ -3,29 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>จดหน่วย</title>
+    <title>จดหน่วยไฟฟ้า</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <div class="app-container">
         <nav class="navbar">
-            <i class="material-icons"></i>
+            <i class="material-icons">arrow_back</i>
             <span class="title">จดหน่วย</span>
             <div>
-                <i class="material-icons"></i>
-                <i class="material-icons"></i>
+                <i class="material-icons">search</i>
+                <i class="material-icons">add</i>
             </div>
         </nav>
         
         <div class="info-bar">
             <div class="left">
                 <i class="material-icons">print</i>
-                <span>TSC: BTSPP</span>
+                <span id="tscInfo">TSC: BTSPP</span>
             </div>
             <div class="right">
                 <i class="material-icons">access_time</i>
-                <span>02-01-2024 09:41</span>
+                <span id="dateTimeInfo">02-01-2024 09:41</span>
                 <i class="material-icons online">fiber_manual_record</i>
                 <span>On</span>
             </div>
@@ -34,14 +34,14 @@
         <div class="content">
             <div class="meter-info">
                 <div class="order">
-                    <span>ลำดับ 4/100</span>
-                    <span class="achm">ACHM0100</span>
+                    <span id="orderInfo">ลำดับ 4/100</span>
+                    <span class="achm" id="achmInfo">ACHM0100</span>
                 </div>
                 <div class="meter-number">
                     <i class="material-icons">electric_meter</i>
                     <div class="meter-details">
                         <div class="meter-id-row">
-                            <span>6603129910</span>
+                            <span id="meterNumber">6603129910</span>
                             <div class="meter-tags">
                                 <span class="tag light">สุ่มหน่วย</span>
                                 <span class="tag yellow">รอจด</span>
@@ -53,40 +53,37 @@
                 <div class="meter-details-row">
                     <div>
                         <span class="label">ยี่ห้อ/รุ่น:</span>
-                        <span>IPG/IPGSM1</span>
+                        <span id="meterModel">IPG/IPGSM1</span>
                     </div>
                     <div>
                         <span class="label">หลักอ่าน:</span>
-                        <span>7.3 หลัก</span>
+                        <span id="meterDigits">7.3 หลัก</span>
                     </div>
                 </div>
                 <div class="meter-details-row">
                     <div>
                         <span class="label">อัตรา:</span>
-                        <select id="rateSelect">
-                            <option value="10">10 (บ้านอยู่อาศัยขนาดเล็ก)</option>
-                            <option value="11">11 (บ้านอยู่อาศัยขนาดใหญ่)</option>
-                        </select>
+                        <select id="rateSelect"></select>
                     </div>
                     <div>
                         <span class="label">รหัสผิดปกติ:</span>
-                        <span>0000</span>
+                        <span id="errorCode">0000</span>
                     </div>
                 </div>
                 <div class="address">
                     <i class="material-icons">place</i>
-                    <span>นายทดสอบ นามสกุล 200 อาคาร 51 การไฟฟ้าส่วนภูมิภาค ถ.งามวงศ์วาน....</span>
+                    <span id="customerAddress">นายทดสอบ นามสกุล 200 อาคาร 51 การไฟฟ้าส่วนภูมิภาค ถ.งามวงศ์วาน....</span>
                 </div>
                 <div class="status">
-                    <span>สถานะ: 1 พิมพ์ใบแจ้ง : 1/1 eBill : 0</span>
+                    <span id="statusInfo">สถานะ: 1 พิมพ์ใบแจ้ง : 1/1 eBill : 0</span>
                 </div>
             </div>
 
             <div class="action-buttons">
-                <button><i class="material-icons">bluetooth</i><span>บลูทูธ</span></button>
-                <button><i class="material-icons">map</i><span>ดูแผนที่</span></button>
-                <button><i class="material-icons">chat</i><span>รหัสผิดปกติ</span></button>
-                <button><i class="material-icons">print</i><span>พิมพ์</span></button>
+                <button id="bluetoothBtn"><i class="material-icons">bluetooth</i><span>บลูทูธ</span></button>
+                <button id="mapBtn"><i class="material-icons">map</i><span>ดูแผนที่</span></button>
+                <button id="errorCodeBtn"><i class="material-icons">chat</i><span>รหัสผิดปกติ</span></button>
+                <button id="printBtn"><i class="material-icons">print</i><span>พิมพ์</span></button>
             </div>
 
             <h2>ข้อมูลการอ่านค่าพลังงานไฟฟ้า</h2>
@@ -94,9 +91,9 @@
             <div class="reading-container">
                 <div class="reading-info">
                     <span class="label">Reg.</span>
-                    <span class="value">000</span>
+                    <span class="value" id="regValue">000</span>
                     <span class="label">Type</span>
-                    <span class="value">kWh</span>
+                    <span class="value" id="typeValue">kWh</span>
                 </div>
                 <div class="reading-input">
                     <input type="text" id="meterReading" placeholder="กรอกค่าที่อ่านได้">
@@ -105,9 +102,9 @@
         </div>
 
         <div class="footer">
-            <button class="nav-button"><i class="material-icons">chevron_left</i></button>
+            <button class="nav-button" id="prevButton"><i class="material-icons">chevron_left</i></button>
             <button class="main-button" id="saveButton">บันทึก</button>
-            <button class="nav-button"><i class="material-icons">chevron_right</i></button>
+            <button class="nav-button" id="nextButton"><i class="material-icons">chevron_right</i></button>
         </div>
     </div>
 
@@ -119,6 +116,6 @@
         </div>
     </div>
 
-    <script type="module" src="js/main.js"></script>
+    <script type="module" src="/js/main.js"></script>
 </body>
 </html>
