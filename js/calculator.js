@@ -10,9 +10,9 @@ export function calculateElectricityBill(units, rate) {
         if (remainingUnits <= 0) break;
         
         const usedUnits = Math.min(remainingUnits, tier.limit);
-        const tierCost = calculateTierCost(usedUnits, tier.price);
+        const tierCost = calculateTierCost(usedUnits, tier.prices);
         
-        calculation.push({ usedUnits, tierCost, price: tier.price });
+        calculation.push({ usedUnits, tierCost, prices: tier.prices });
         totalEnergyCost += tierCost;
         remainingUnits -= usedUnits;
     }
@@ -34,8 +34,8 @@ export function calculateElectricityBill(units, rate) {
     };
 }
 
-function calculateTierCost(units, price) {
-    return Math.round(units * price * 100) / 100;
+function calculateTierCost(units, prices) {
+    return prices.reduce((total, price) => total + Math.round(units * price * 100) / 100, 0);
 }
 
 function calculateFtCharge(units) {
