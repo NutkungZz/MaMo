@@ -1,9 +1,16 @@
+// อัตรา Ft
 export const FT_RATE = 0.3972;
+
+// อัตราภาษีมูลค่าเพิ่ม (VAT)
 export const VAT_RATE = 0.07;
 
+// รายละเอียดอัตราค่าไฟฟ้าแต่ละประเภท
 export const RATE_DETAILS = {
     '10': {
         name: 'บ้านอยู่อาศัยขนาดเล็ก',
+        // แต่ละ object ใน array นี้แทนช่วงการใช้ไฟฟ้า (tier)
+        // limit คือจำนวนหน่วยสูงสุดของช่วงนี้
+        // prices เป็น array ของราคาต่อหน่วย (มีหลายราคา แยกตาม Gen_rate, Trans_rate, Dist_rate, Support_rate)
         tiers: [
             { limit: 15, prices: [2.3488, 0, 0, 0] },
             { limit: 10, prices: [2.9882, 0, 0, 0] },
@@ -13,7 +20,7 @@ export const RATE_DETAILS = {
             { limit: 250, prices: [4.2218, 0, 0, 0] },
             { limit: Infinity, prices: [4.4217, 0, 0, 0] }
         ],
-        serviceCharge: 8.19
+        serviceCharge: 8.19 //ค่าบริการรายเดือน
     },
     '11': {
         name: 'บ้านอยู่อาศัยขนาดใหญ่',
